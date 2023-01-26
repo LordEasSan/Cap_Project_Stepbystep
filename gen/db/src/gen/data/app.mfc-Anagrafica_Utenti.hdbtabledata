@@ -1,0 +1,33 @@
+{
+  "format_version": 1,
+  "imports": [
+    {
+      "target_table": "APP_MFC_ANAGRAFICA_UTENTI",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "app.mfc-Anagrafica_Utenti.csv",
+        "has_header": true,
+        "type_config": {
+          "delimiter": ","
+        }
+      },
+      "import_settings": {
+        "import_columns": [
+          "\"ID_UTENTE\"",
+          "\"COGNOME_UTENTE\"",
+          "\"NOME_UTENTE\"",
+          "\"EMAIL_UTENTE\"",
+          "\"TELEFONO_UTENTE\""
+        ],
+        "include_filter": []
+      },
+      "column_mappings": {
+        "\"ID_UTENTE\"": "\"ID_UTENTE\"",
+        "\"COGNOME_UTENTE\"": "\"COGNOME_UTENTE\"",
+        "\"NOME_UTENTE\"": "\"NOME_UTENTE\"",
+        "\"EMAIL_UTENTE\"": "\"EMAIL_UTENTE\"",
+        "\"TELEFONO_UTENTE\"": "\"TELEFONO_UTENTE\""
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "format_version": 1,
+  "imports": [
+    {
+      "target_table": "APP_MFC_ANAGRAFICA_FLUSSI",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "app.mfc-Anagrafica_Flussi.csv",
+        "has_header": true,
+        "type_config": {
+          "delimiter": ","
+        }
+      },
+      "import_settings": {
+        "import_columns": [
+          "\"ID_FLUSSO\"",
+          "\"NOME_FLUSSO\"",
+          "\"DESCRIZIONE_FLUSSO\""
+        ],
+        "include_filter": []
+      },
+      "column_mappings": {
+        "\"ID_FLUSSO\"": "\"ID_FLUSSO\"",
+        "\"NOME_FLUSSO\"": "\"NOME_FLUSSO\"",
+        "\"DESCRIZIONE_FLUSSO\"": "\"DESCRIZIONE_FLUSSO\""
+      }
+    }
+  ]
+}

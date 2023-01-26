@@ -1,0 +1,386 @@
+{
+  "namespace": "app.mfc",
+  "definitions": {
+    "app.mfc.Varchar": {
+      "kind": "type",
+      "type": "cds.String",
+      "length": 30
+    },
+    "app.mfc.SDate": {
+      "kind": "type",
+      "type": "cds.DateTime"
+    },
+    "app.mfc.LText": {
+      "kind": "type",
+      "type": "cds.String",
+      "length": 20
+    },
+    "app.mfc.Bolla": {
+      "kind": "type",
+      "type": "cds.Boolean"
+    },
+    "app.mfc.Messaggio": {
+      "kind": "type",
+      "type": "cds.String",
+      "length": 1000
+    },
+    "app.mfc.email": {
+      "kind": "type",
+      "type": "cds.String",
+      "length": 40
+    },
+    "app.mfc.Descrizioneflusso": {
+      "kind": "type",
+      "type": "cds.String",
+      "length": 50
+    },
+    "app.mfc.Anagrafica_Utenti": {
+      "kind": "entity",
+      "elements": {
+        "ID_UTENTE": {
+          "key": true,
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "COGNOME_UTENTE": {
+          "type": "app.mfc.Varchar",
+          "length": 30,
+          "notNull": true
+        },
+        "NOME_UTENTE": {
+          "type": "app.mfc.Varchar",
+          "length": 30,
+          "notNull": true
+        },
+        "EMAIL_UTENTE": {
+          "type": "app.mfc.email",
+          "length": 40,
+          "notNull": true
+        },
+        "TELEFONO_UTENTE": {
+          "type": "app.mfc.LText",
+          "length": 20,
+          "notNull": true
+        }
+      }
+    },
+    "app.mfc.Anagrafica_Ruoli": {
+      "kind": "entity",
+      "elements": {
+        "ID_RUOLO": {
+          "key": true,
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "RUOLO": {
+          "type": "app.mfc.LText",
+          "length": 20,
+          "notNull": true
+        }
+      }
+    },
+    "app.mfc.Anagrafica_Flussi": {
+      "kind": "entity",
+      "elements": {
+        "ID_FLUSSO": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "NOME_FLUSSO": {
+          "type": "app.mfc.Varchar",
+          "length": 30,
+          "notNull": true
+        },
+        "DESCRIZIONE_FLUSSO": {
+          "type": "app.mfc.Descrizioneflusso",
+          "length": 50
+        }
+      }
+    },
+    "app.mfc.Anagrafica_Moduli": {
+      "kind": "entity",
+      "elements": {
+        "ID_MODULO": {
+          "key": true,
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "MODULO": {
+          "type": "app.mfc.LText",
+          "length": 20,
+          "notNull": true
+        }
+      }
+    },
+    "app.mfc.Anagrafica_Stato_Errori": {
+      "kind": "entity",
+      "elements": {
+        "ID_STATO_ERRORE": {
+          "key": true,
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "Stato_Errore": {
+          "type": "app.mfc.Varchar",
+          "length": 30,
+          "notNull": true
+        }
+      }
+    },
+    "app.mfc.Anagrafica_Errori": {
+      "kind": "entity",
+      "elements": {
+        "ID_ERRORE": {
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "ID_FLUSSO": {
+          "type": "cds.Association",
+          "target": "app.mfc.Anagrafica_Flussi",
+          "on": [
+            {
+              "ref": [
+                "ID_FLUSSO"
+              ]
+            }
+          ]
+        },
+        "MESSAGGIO_ERRORE": {
+          "type": "app.mfc.Messaggio",
+          "length": 1000,
+          "notNull": true
+        },
+        "DATA_ERRORE": {
+          "type": "app.mfc.SDate",
+          "notNull": true
+        },
+        "ID_STATO_ERRORE": {
+          "type": "cds.Association",
+          "target": "app.mfc.Anagrafica_Stato_Errori",
+          "on": [
+            {
+              "ref": [
+                "ID_STATO_ERRORE"
+              ]
+            }
+          ]
+        },
+        "ID_UTENTE": {
+          "type": "cds.Association",
+          "target": "app.mfc.Anagrafica_Utenti",
+          "on": [
+            {
+              "ref": [
+                "ID_UTENTE"
+              ]
+            }
+          ]
+        },
+        "STATO_BOTTONE": {
+          "type": "app.mfc.Bolla",
+          "notNull": true
+        }
+      }
+    },
+    "CatalogService": {
+      "@source": "srv/mfc_srv.cds",
+      "kind": "service",
+      "@path": "/CatalogService"
+    },
+    "CatalogService.Anagrafica_Utenti": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "app.mfc.Anagrafica_Utenti"
+          ]
+        }
+      },
+      "elements": {
+        "ID_UTENTE": {
+          "key": true,
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "COGNOME_UTENTE": {
+          "type": "app.mfc.Varchar",
+          "length": 30,
+          "notNull": true
+        },
+        "NOME_UTENTE": {
+          "type": "app.mfc.Varchar",
+          "length": 30,
+          "notNull": true
+        },
+        "EMAIL_UTENTE": {
+          "type": "app.mfc.email",
+          "length": 40,
+          "notNull": true
+        },
+        "TELEFONO_UTENTE": {
+          "type": "app.mfc.LText",
+          "length": 20,
+          "notNull": true
+        }
+      }
+    },
+    "CatalogService.Anagrafica_Ruoli": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "app.mfc.Anagrafica_Ruoli"
+          ]
+        }
+      },
+      "elements": {
+        "ID_RUOLO": {
+          "key": true,
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "RUOLO": {
+          "type": "app.mfc.LText",
+          "length": 20,
+          "notNull": true
+        }
+      }
+    },
+    "CatalogService.Anagrafica_Flussi": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "app.mfc.Anagrafica_Flussi"
+          ]
+        }
+      },
+      "elements": {
+        "ID_FLUSSO": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "NOME_FLUSSO": {
+          "type": "app.mfc.Varchar",
+          "length": 30,
+          "notNull": true
+        },
+        "DESCRIZIONE_FLUSSO": {
+          "type": "app.mfc.Descrizioneflusso",
+          "length": 50
+        }
+      }
+    },
+    "CatalogService.Anagrafica_Moduli": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "app.mfc.Anagrafica_Moduli"
+          ]
+        }
+      },
+      "elements": {
+        "ID_MODULO": {
+          "key": true,
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "MODULO": {
+          "type": "app.mfc.LText",
+          "length": 20,
+          "notNull": true
+        }
+      }
+    },
+    "CatalogService.Anagrafica_Errori": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "app.mfc.Anagrafica_Errori"
+          ]
+        }
+      },
+      "elements": {
+        "ID_ERRORE": {
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "ID_FLUSSO": {
+          "type": "cds.Association",
+          "target": "CatalogService.Anagrafica_Flussi",
+          "on": [
+            {
+              "ref": [
+                "ID_FLUSSO"
+              ]
+            }
+          ]
+        },
+        "MESSAGGIO_ERRORE": {
+          "type": "app.mfc.Messaggio",
+          "length": 1000,
+          "notNull": true
+        },
+        "DATA_ERRORE": {
+          "type": "app.mfc.SDate",
+          "notNull": true
+        },
+        "ID_STATO_ERRORE": {
+          "type": "cds.Association",
+          "target": "CatalogService.Anagrafica_Stato_Errori",
+          "on": [
+            {
+              "ref": [
+                "ID_STATO_ERRORE"
+              ]
+            }
+          ]
+        },
+        "ID_UTENTE": {
+          "type": "cds.Association",
+          "target": "CatalogService.Anagrafica_Utenti",
+          "on": [
+            {
+              "ref": [
+                "ID_UTENTE"
+              ]
+            }
+          ]
+        },
+        "STATO_BOTTONE": {
+          "type": "app.mfc.Bolla",
+          "notNull": true
+        }
+      }
+    },
+    "CatalogService.Anagrafica_Stato_Errori": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "app.mfc.Anagrafica_Stato_Errori"
+          ]
+        }
+      },
+      "elements": {
+        "ID_STATO_ERRORE": {
+          "key": true,
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "Stato_Errore": {
+          "type": "app.mfc.Varchar",
+          "length": 30,
+          "notNull": true
+        }
+      }
+    }
+  },
+  "meta": {
+    "creator": "CDS Compiler v3.5.4",
+    "flavor": "inferred"
+  },
+  "$version": "2.0"
+}

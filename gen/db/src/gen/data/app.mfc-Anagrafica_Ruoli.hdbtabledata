@@ -1,0 +1,27 @@
+{
+  "format_version": 1,
+  "imports": [
+    {
+      "target_table": "APP_MFC_ANAGRAFICA_RUOLI",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "app.mfc-Anagrafica_Ruoli.csv",
+        "has_header": true,
+        "type_config": {
+          "delimiter": ","
+        }
+      },
+      "import_settings": {
+        "import_columns": [
+          "\"ID_RUOLO\"",
+          "\"RUOLO\""
+        ],
+        "include_filter": []
+      },
+      "column_mappings": {
+        "\"ID_RUOLO\"": "\"ID_RUOLO\"",
+        "\"RUOLO\"": "\"RUOLO\""
+      }
+    }
+  ]
+}

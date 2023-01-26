@@ -1,0 +1,27 @@
+{
+  "format_version": 1,
+  "imports": [
+    {
+      "target_table": "APP_MFC_ANAGRAFICA_MODULI",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "app.mfc-Anagrafica_Moduli.csv",
+        "has_header": true,
+        "type_config": {
+          "delimiter": ","
+        }
+      },
+      "import_settings": {
+        "import_columns": [
+          "\"ID_MODULO\"",
+          "\"MODULO\""
+        ],
+        "include_filter": []
+      },
+      "column_mappings": {
+        "\"ID_MODULO\"": "\"ID_MODULO\"",
+        "\"MODULO\"": "\"MODULO\""
+      }
+    }
+  ]
+}
